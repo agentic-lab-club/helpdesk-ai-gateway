@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: form_db
+    restart: always
+    environment:
+      POSTGRES_DB: form
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5435:5432"
+    volumes:
+      - form-data:/var/lib/postgresql/data
+    networks:
+      - form-net
+
+  app:
+    build: .
+    container_name: form_app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/form
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "9805:9805"
+    networks:
+      - form-net
+
+volumes:
+  form-data:
+
+networks:
+  form-net:
+    driver: bridge
