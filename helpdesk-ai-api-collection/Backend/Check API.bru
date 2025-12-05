@@ -1,0 +1,16 @@
+meta {
+  name: Check API
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

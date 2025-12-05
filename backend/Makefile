@@ -17,9 +17,9 @@ remove:
 exec-app:
 	@docker exec -it backend_app sh
 
-exec-db:
-	@docker exec -it postgres_db psql -U postgres -d app_db
-	#@docker exec -it postgres_db sh
+psql:
+#	@docker exec -it postgres_db psql -U postgres -d app_db
+	@docker exec -it postgres_db psql -U postgres -d helpdeskai_db
 
 test:
 	@echo "Testing..."

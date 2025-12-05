@@ -6,10 +6,13 @@ from sqlalchemy import text
 # from app.routers import example
 from app.configs.database import Base, engine, get_db
 
-# Uncomment to create tables
-# Base.metadata.create_all(bind=engine)
+# Импорт всех моделей для создания таблиц
+from app.models import employee, ticket, category, priority, chat_history
 
-app = FastAPI(title="API Template", version="1.0.0")
+# Создание таблиц
+Base.metadata.create_all(bind=engine)
+
+app = FastAPI(title="HelpDesk AI Gateway", version="1.0.0")
 
 # CORS configuration
 origins = ["*"]
@@ -27,7 +30,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "API Template"}
+    return {"message": "HelpDesk AI Gateway API"}
 
 @app.get("/health")
 def health_check(db: Session = Depends(get_db)):
