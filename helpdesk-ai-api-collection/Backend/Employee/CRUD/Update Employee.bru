@@ -1,0 +1,19 @@
+meta {
+  name: Update Employee
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/employees/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "full_name": "John Smith",
+    "telegram_username": "john_smith",
+    "status": "BUSY"
+  }
+}
