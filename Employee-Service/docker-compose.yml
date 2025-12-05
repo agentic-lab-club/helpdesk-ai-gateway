@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:16-alpine
+    container_name: employee_db
+    environment:
+      POSTGRES_USER: employee_user
+      POSTGRES_PASSWORD: employee_pass
+      POSTGRES_DB: employee_db
+    ports:
+      - "5442:5432"
+    volumes:
+      - employee-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U employee_user -d employee_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+
+  app:
+    build: .
+    container_name: employee_app
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8787:8787"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8787/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  employee-db-data:
