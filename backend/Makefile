@@ -1,38 +1,23 @@
-depl-build:
-	@echo "Building Docker Image to dotpep/flaudlitebackend..."
-	
-	@docker build -t dotpep/flaudlitebackend .
-
-depl-push:
-	@echo "Pushing Docker Image to dotpep/flaudlitebackend..."
-	
-	@docker push dotpep/flaudlitebackend
-
-run:
-	@echo "Server is on running..."
-
-	@fastapi dev .\app\main.py
-
-docker-build:
+build:
 	@docker compose up --build -d
 
-docker-run:
+up:
 	@docker compose up -d
 
-docker-logs:
+logs:
 	@docker compose logs -f
 
-docker-down:
+down:
 	@docker compose down
 
-docker-remove:
+remove:
 	@docker compose down -v
-	#@docker-compose down --remove-orphans
+	#@compose down --remove-orphans
 
-docker-exec-app:
-	@docker exec -it fastapi_app sh
+exec-app:
+	@docker exec -it backend_app sh
 
-docker-exec-db:
+exec-db:
 	@docker exec -it postgres_db psql -U postgres -d app_db
 	#@docker exec -it postgres_db sh
 

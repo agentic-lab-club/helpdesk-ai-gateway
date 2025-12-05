@@ -1,6 +1,6 @@
 # FastAPI Template
 
-Чистый темплейт для FastAPI проектов с PostgreSQL.
+Чистый темплейт для FastAPI проектов с PostgreSQL и Alembic.
 
 ## Структура проекта
 
@@ -13,6 +13,7 @@ app/
 ├── services/        # Бизнес-логика
 ├── utils/           # Утилиты
 └── main.py          # Точка входа
+alembic/             # Миграции БД
 ```
 
 ## Быстрый старт
@@ -23,6 +24,19 @@ app/
 
 ```bash
 docker-compose up --build
+```
+
+## Миграции БД
+
+```bash
+# Создать миграцию
+alembic revision --autogenerate -m "Initial migration"
+
+# Применить миграции
+alembic upgrade head
+
+# Откатить миграцию
+alembic downgrade -1
 ```
 
 ## Разработка

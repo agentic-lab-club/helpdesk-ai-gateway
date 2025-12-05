@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from sqlalchemy import text
 
 # from app.routers import example
-# from app.configs.database import Base, engine
+from app.configs.database import Base, engine, get_db
 
 # Uncomment to create tables
 # Base.metadata.create_all(bind=engine)
@@ -28,5 +30,9 @@ def read_root():
     return {"message": "API Template"}
 
 @app.get("/health")
-def health_check():
-    return {"status": "ok"}
+def health_check(db: Session = Depends(get_db)):
+    try:
+        db.execute(text("SELECT 1"))
+        return {"status": "ok", "database": "connected"}
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Database connection failed: {str(e)}")
