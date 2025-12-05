@@ -4,6 +4,9 @@ build:
 up:
 	@docker compose up -d
 
+re:
+	@docker compose up -d --build
+
 logs:
 	@docker compose logs -f
 

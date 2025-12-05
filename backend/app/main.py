@@ -3,11 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
-# from app.routers import example
+from app.routers import employee
 from app.configs.database import Base, engine, get_db
 
 # Импорт всех моделей для создания таблиц
-from app.models import employee, ticket, category, priority, chat_history
+from app.models import employee as employee_model, ticket, category, priority, chat_history
 
 # Создание таблиц
 Base.metadata.create_all(bind=engine)
@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 # Include routers
-# app.include_router(example.router)
+app.include_router(employee.router)
 
 @app.get("/")
 def read_root():
