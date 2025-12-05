@@ -1,0 +1,24 @@
+<svg width="420" height="100" viewBox="0 0 420 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon - Gateway with AI Node -->
+  <path d="M8 16C8 11.5817 11.5817 8 16 8H48C52.4183 8 56 11.5817 56 16V48C56 52.4183 52.4183 56 48 56H16C11.5817 56 8 52.4183 8 48V16Z" stroke="#1e293b" stroke-width="2.5" fill="none"/>
+  <path d="M20 32H28M36 32H44M32 20V28M32 36V44" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="5" fill="#3b82f6"/>
+  <circle cx="20" cy="20" r="2.5" fill="#1e293b"/>
+  <circle cx="44" cy="20" r="2.5" fill="#1e293b"/>
+  <circle cx="20" cy="44" r="2.5" fill="#1e293b"/>
+  <circle cx="44" cy="44" r="2.5" fill="#1e293b"/>
+  <path d="M14 32L6 32M6 32L9 29M6 32L9 35" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M50 32L58 32M58 32L55 29M58 32L55 35" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text -->
+  <text x="72" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#1e293b">
+    <tspan font-weight="300">HelpDesk</tspan>
+    <tspan fill="#3b82f6" font-weight="400"> AI</tspan>
+    <tspan font-weight="300">-Gateway</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text x="72" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b" letter-spacing="1.5">
+    INTELLIGENT REQUEST ROUTING
+  </text>
+</svg>
