@@ -5,8 +5,8 @@ import enum
 
 
 class EmployeeStatus(str, enum.Enum):
-    FREE = "Свободен"
-    BUSY = "Не Свободен"
+    FREE = "FREE"
+    BUSY = "BUSY"
 
 
 class Employee(Base):
